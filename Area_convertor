@@ -1,0 +1,115 @@
+from tkinter import *
+from tkinter.messagebox import *
+
+root=Tk()
+root.title("AREA CONVERTER BY SHUBHAM LONE")
+root.geometry("1000x800+50+50")
+f = ("Times New Roman", 30, "bold")
+
+labTitle = Label(root, text="AREA CONVERTER", font =f, bg="azure")
+labTitle.place(x=300, y=30)
+
+def areaRectangle():
+	try:
+		length = float(entLength.get())
+		width = float(entWidth.get())
+		if length <= 0.0 or width <= 0.0:
+			raise Exception("Dimension must be positive numbers")
+		
+		areaRect = length*width
+		areaRect = round(areaRect,2)
+		labAns.configure(text=areaRect)
+	except ValueError:
+		showerror("issue", "INPUT Should Contain Numbers Only")
+
+	except Exception as e:
+		showerror("issue", e)
+		
+def areaTraingle():
+	try:
+		length = float(entLength.get())
+		width = float(entWidth.get())
+		height = float(entHeight.get())
+		if length <= 0.0 or width <= 0.0 or height<= 0.0:
+			raise Exception("Dimension must be positive numbers")
+		
+		areaTri = length*width*height
+		areaTri = round(areaTri,2)
+		labAns.configure(text=areaTri)
+	except ValueError:
+		showerror("issue", "INPUT Should Contain Numbers Only")
+	except Exception as e:
+		showerror("issue", e)
+		
+def areaSquare():
+	try:
+		side = float(entSide.get())
+		if side <= 0.0:
+			raise Exception("Dimension must be positive numbers")
+		
+		areaSqr = side * side
+		areaSqr = round(areaSqr,2)
+		labAns.configure(text=areaSqr)
+	except ValueError:
+		showerror("issue", "INPUT Should Contain Numbers Only")
+	except Exception as e:
+		showerror("issue", e)
+
+def areaCircle():
+	try:
+		radius = float(entRadius.get())
+		if radius <= 0.0:
+			raise Exception("Dimension must be positive numbers")
+		
+		areaCir = 3.142*radius
+		areaCir = round(areaCir,2)
+		labAns.configure(text=areaCir)
+	except ValueError:
+		showerror("issue", "INPUT Should Contain Numbers Only")
+	except Exception as e:
+		showerror("issue", e)
+
+
+
+
+labLength = Label(root, text="Length", font=f)
+labLength.place(x=100, y=100)
+entLength = Entry(root, width=8,font=f)
+entLength.place(x=400,y=100)
+
+labWidth = Label(root, text="Width", font=f)
+labWidth.place(x=100, y=160)
+entWidth = Entry(root, width=8,font=f)
+entWidth.place(x=400,y=160)
+
+labHeight = Label(root, text="Height", font=f)
+labHeight.place(x=100, y=230)
+entHeight = Entry(root, width=8,font=f)
+entHeight.place(x=400,y=230)
+
+labSide = Label(root, text="Side", font=f)
+labSide.place(x=100, y=300)
+entSide = Entry(root, width=8,font=f)
+entSide.place(x=400,y=300)
+
+labRadius = Label(root, text="Radius", font=f)
+labRadius.place(x=100, y= 360)
+entRadius = Entry(root, width=8, font=f)
+entRadius.place(x=400, y=360)
+
+
+btnget= Button(root, text="Rectangle",width=8, font=f,bg="light blue", command=areaRectangle)
+btnget.place(x=100, y=600)
+btnget= Button(root, text="Triangle",width=8, font=f,bg="light blue", command=areaTraingle)
+btnget.place(x=400, y=600)
+btnget= Button(root, text="Square",width=8, font=f,bg="light blue", command=areaSquare)
+btnget.place(x=800, y=600)
+btnget= Button(root, text="Circle",width=8, font=f,bg="light blue", command=areaCircle)
+btnget.place(x=1200, y=600)
+
+labArea = Label(root,width=8, text="AREA= ", font=f )
+labArea.place(x=600, y=80)
+labAns = Label(root, width=8, font=f, bg="azure")
+labAns.place(x=800,y=80)
+
+root.mainloop()
